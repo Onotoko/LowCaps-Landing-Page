@@ -3,10 +3,8 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Wallet, X, Check } from 'lucide-react';
 import { useWeb3 } from '@/hooks/useWeb3';
 import { TEAM_MEMBERS, SERVICES } from '@/lib/constants';
-import { TeamMember, Service } from '@/types/web3';
 
 export default function LandingPage() {
   const {
