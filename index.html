@@ -167,6 +167,7 @@
             --text-secondary: #8B92B9;
             --coral: #FF6B6B;
             --supra-red: #d64665;
+            --success-green: #4AFF88;
         }
 
         body {
@@ -313,8 +314,13 @@
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 30px;
             list-style: none;
+            align-items: center;
+        }
+
+        .nav-links li {
+            display: flex;
             align-items: center;
         }
 
@@ -330,6 +336,238 @@
             color: var(--text-primary);
         }
 
+        /* Wallet Modal Styles */
+        .wallet-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .wallet-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .wallet-modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            width: 90%;
+            max-width: 420px;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .wallet-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .wallet-modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .wallet-modal-close {
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #666;
+            cursor: pointer;
+            padding: 0;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: all 0.2s;
+        }
+
+        .wallet-modal-close:hover {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .wallet-option {
+            background: #f5f5f5;
+            border: 2px solid transparent;
+            border-radius: 12px;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 15px;
+        }
+
+        .wallet-option:hover {
+            background: #ebebeb;
+            border-color: var(--supra-red);
+            transform: translateX(5px);
+        }
+
+        .wallet-option-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .wallet-option-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            padding: 0;
+            flex-shrink: 0;
+        }
+
+        .wallet-option-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .wallet-option-name {
+            font-size: 20px;
+            font-weight: 600;
+            color: #1a1a1a;
+            line-height: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .wallet-option-arrow {
+            color: var(--supra-red);
+            font-size: 20px;
+        }
+
+        .wallet-modal-footer {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+            font-size: 13px;
+            color: #666;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .wallet-modal-footer a {
+            color: var(--supra-red);
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.2s;
+        }
+
+        .wallet-modal-footer a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* Connect Wallet Button - Clean Style */
+        .connect-nav-btn {
+            background: white;
+            color: #333 !important;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 600 !important;
+            font-size: 16px;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            border: 2px solid #d64665;
+            box-shadow: none;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connect-nav-btn:hover {
+            background: #d64665;
+            color: white !important;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(214, 70, 101, 0.4);
+        }
+
+        .connect-nav-btn:hover .wallet-icon svg {
+            fill: white;
+        }
+
+        .connect-nav-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(214, 70, 101, 0.3);
+        }
+
+        .connect-nav-btn.connected {
+            background: rgba(74, 255, 136, 0.1);
+            border-color: var(--success-green);
+            color: #333 !important;
+        }
+
+        .connect-nav-btn.connected:hover {
+            background: rgba(74, 255, 136, 0.2);
+            border-color: var(--success-green);
+            color: #333 !important;
+        }
+
+        .connect-nav-btn.connected:hover .wallet-icon svg {
+            fill: var(--success-green);
+        }
+
+        .wallet-icon {
+            width: 20px;
+            height: 16px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .wallet-icon svg {
+            width: 100%;
+            height: 100%;
+            fill: #4a4a4a;
+            transition: fill 0.3s;
+        }
+
         .contact-nav-btn {
             background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
             color: white !important;
@@ -342,6 +580,176 @@
         .contact-nav-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(74, 159, 255, 0.4);
+        }
+
+        /* Web3 Connection Status */
+        .web3-section {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 999;
+            background: rgba(20, 27, 60, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(214, 70, 101, 0.3);
+            border-radius: 15px;
+            padding: 15px;
+            min-width: 200px;
+            transform: translateX(300px);
+            transition: transform 0.3s ease;
+        }
+
+        .web3-section.connected {
+            transform: translateX(0);
+        }
+
+        .wallet-address {
+            color: var(--text-secondary);
+            font-size: 12px;
+            margin-top: 8px;
+            word-break: break-all;
+        }
+
+        .disconnect-btn {
+            margin-top: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 12px;
+            width: 100%;
+            transition: background 0.3s;
+        }
+
+        .disconnect-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Blockchain verification badge */
+        .blockchain-verified {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--supra-red);
+            color: white;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 2px 10px rgba(214, 70, 101, 0.5);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(214, 70, 101, 0.7);
+            }
+
+            70% {
+                box-shadow: 0 0 0 15px rgba(214, 70, 101, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(214, 70, 101, 0);
+            }
+        }
+
+        .verification-status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-top: 5px;
+            background: rgba(214, 70, 101, 0.1);
+            color: var(--supra-red);
+            border: 1px solid rgba(214, 70, 101, 0.3);
+        }
+
+        .verification-status.verified {
+            background: rgba(74, 159, 255, 0.1);
+            color: var(--primary-blue);
+            border-color: rgba(74, 159, 255, 0.3);
+        }
+
+        .team-member-stats {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.6);
+            display: none;
+        }
+
+        .member-card.web3-connected .team-member-stats {
+            display: block;
+        }
+
+        .stat-badge {
+            display: inline-block;
+            padding: 2px 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin: 2px;
+        }
+
+        /* Notification Styles */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            padding: 15px 25px;
+            border-radius: 10px;
+            z-index: 10000;
+            animation: slideIn 0.3s ease;
+        }
+
+        .notification.success {
+            background: rgba(74, 255, 136, 0.1);
+            border: 1px solid rgba(74, 255, 136, 0.3);
+        }
+
+        .notification.info {
+            background: rgba(74, 159, 255, 0.1);
+            border: 1px solid rgba(74, 159, 255, 0.3);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideOut {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* Hero Section */
@@ -568,6 +976,7 @@
         .member-card {
             text-align: center;
             transition: transform 0.3s;
+            position: relative;
         }
 
         .member-card:hover {
@@ -714,41 +1123,6 @@
             line-height: 1.6;
         }
 
-        /* Stats Section */
-        .stats-section {
-            padding: 80px 40px;
-            background: rgba(20, 27, 60, 0.3);
-            position: relative;
-            z-index: 1;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 20px;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-blue), var(--accent-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-
         /* CTA Section */
         .cta-section {
             position: relative;
@@ -779,16 +1153,6 @@
             animation: rotate 20s linear infinite;
         }
 
-        @keyframes rotate {
-            from {
-                transform: rotate(0deg);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
         .cta-content {
             position: relative;
             z-index: 1;
@@ -804,26 +1168,6 @@
             color: var(--text-secondary);
             font-size: 1.2rem;
             margin-bottom: 30px;
-        }
-
-        .contact-info {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 30px 0;
-            font-size: 1.3rem;
-        }
-
-        .contact-info a {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        .contact-info a:hover {
-            color: var(--accent-cyan);
         }
 
         .cta-features {
@@ -893,13 +1237,22 @@
                 padding: 30px;
                 transform: translateX(-100%);
                 transition: transform 0.3s;
+                gap: 20px;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .connect-nav-btn {
+                width: 100%;
+                justify-content: center;
             }
 
             .nav-links.active {
                 transform: translateX(0);
             }
 
-            /* Mobile logo adjustments */
             .logo-container {
                 gap: 8px;
             }
@@ -950,10 +1303,6 @@
                 grid-template-columns: 1fr;
             }
 
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .cta-container {
                 padding: 40px 20px;
             }
@@ -975,6 +1324,45 @@
 <body>
     <!-- Animated Stars Background -->
     <div class="stars-container"></div>
+
+    <!-- Wallet Connection Modal -->
+    <div class="wallet-modal" id="walletModal">
+        <div class="wallet-modal-content">
+            <div class="wallet-modal-header">
+                <h2 class="wallet-modal-title">Connect your Wallet</h2>
+                <button class="wallet-modal-close" onclick="closeWalletModal()">✕</button>
+            </div>
+
+            <div class="wallet-option" onclick="connectWithStarkey()">
+                <div class="wallet-option-info">
+                    <div class="wallet-option-icon">
+                        <img src="https://images.sftcdn.net/images/t_app-icon-m/p/4880d747-59d4-4550-9e96-647571541b84/4155430577/starkey-wallet-the-official-wallet-for-supra-logo"
+                            alt="StarKey Wallet">
+                    </div>
+                    <span class="wallet-option-name">StarKey</span>
+                </div>
+                <span class="wallet-option-arrow">→</span>
+            </div>
+
+            <div class="wallet-modal-footer">
+                By continuing you agree to SupraScan's
+                <a href="https://supra.com/privacy-policy/" target="_blank">Privacy Policy</a>
+                and
+                <a href="https://supra.com/terms-of-use/" target="_blank">Terms & Conditions</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Web3 Connection Status -->
+    <div class="web3-section" id="web3Status">
+        <div id="walletInfo">
+            <strong style="color: var(--supra-red);">SUPRA Network</strong>
+            <div class="wallet-address" id="walletAddress"></div>
+            <button class="disconnect-btn" onclick="disconnectWallet()">
+                Disconnect
+            </button>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <header>
@@ -1009,6 +1397,18 @@
                 <li><a href="#team">Team</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#about">About</a></li>
+                <li>
+                    <button class="connect-nav-btn" id="connectBtn" onclick="handleWalletConnection(event)">
+                        <span class="wallet-icon">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M21 18V19C21 20.1 20.1 21 19 21H5C3.89 21 3 20.1 3 19V5C3 3.9 3.89 3 5 3H19C20.1 3 21 3.9 21 5V6H12C10.89 6 10 6.9 10 8V16C10 17.1 10.89 18 12 18H21ZM12 16H22V8H12V16ZM16 13.5C15.17 13.5 14.5 12.83 14.5 12C14.5 11.17 15.17 10.5 16 10.5C16.83 10.5 17.5 11.17 17.5 12C17.5 12.83 16.83 13.5 16 13.5Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </span>
+                        <span id="walletBtnText">Connect</span>
+                    </button>
+                </li>
                 <li><a href="#contact" class="contact-nav-btn">Get Started</a></li>
             </ul>
         </nav>
@@ -1049,44 +1449,69 @@
                 </div>
 
                 <div class="team-members">
-                    <div class="member-card">
+                    <div class="member-card" data-wallet="0x1234...5678">
                         <div class="member-avatar">
                             <img src="assets/team/brett.png" alt="Brett - Project manager">
+                            <div class="blockchain-verified">✓</div>
                         </div>
                         <div class="member-name">Brett</div>
                         <div class="member-role">Project manager</div>
+                        <div class="team-member-stats">
+                            <span class="stat-badge">50+ Projects</span>
+                            <span class="stat-badge">4.9★ Rating</span>
+                        </div>
                     </div>
 
-                    <div class="member-card">
+                    <div class="member-card" data-wallet="0x2345...6789">
                         <div class="member-avatar">
                             <img src="assets/team/andy.png" alt="Andy - Marketing Professional">
+                            <div class="blockchain-verified">✓</div>
                         </div>
                         <div class="member-name">Andy</div>
                         <div class="member-role">Marketing Professional</div>
+                        <div class="team-member-stats">
+                            <span class="stat-badge">30+ Campaigns</span>
+                            <span class="stat-badge">5.0★ Rating</span>
+                        </div>
                     </div>
 
-                    <div class="member-card">
+                    <div class="member-card" data-wallet="0x3456...7890">
                         <div class="member-avatar">
                             <img src="assets/team/jena.png" alt="Jena - Blockchain Specialist">
+                            <div class="blockchain-verified">✓</div>
                         </div>
                         <div class="member-name">Jena</div>
                         <div class="member-role">Blockchain Specialist</div>
+                        <div class="team-member-stats">
+                            <span class="stat-badge">100+ Contracts</span>
+                            <span class="stat-badge">Audited</span>
+                        </div>
                     </div>
 
-                    <div class="member-card">
+                    <div class="member-card" data-wallet="0x4567...8901">
                         <div class="member-avatar">
                             <img src="assets/team/mohit.png" alt="Mohit - Frontend Engineer">
+                            <div class="blockchain-verified">✓</div>
                         </div>
                         <div class="member-name">Mohit</div>
                         <div class="member-role">Frontend Engineer</div>
+                        <div class="team-member-stats">
+                            <span class="stat-badge">75+ dApps</span>
+                            <span class="stat-badge">React Expert</span>
+                        </div>
                     </div>
 
-                    <div class="member-card">
+                    <div class="member-card" data-wallet="0x5678...9012">
                         <div class="member-avatar">
                             <img src="assets/team/ryan.png" alt="Ryan - AI Professional">
+                            <div class="blockchain-verified">✓</div>
                         </div>
                         <div class="member-name">Ryan</div>
                         <div class="member-role">AI Professional</div>
+                        <div class="team-member-stats">
+                            <span class="stat-badge">20+ AI Models</span>
+                            <span class="stat-badge">ML Expert</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1145,28 +1570,6 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <!-- <section class="stats-section">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">50+</div>
-                <div class="stat-label">Projects Completed</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">$10M+</div>
-                <div class="stat-label">TVL Secured</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">5</div>
-                <div class="stat-label">Expert Developers</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">Support Available</div>
-            </div>
-        </div>
-    </section> -->
-
     <!-- CTA Section -->
     <section class="cta-section" id="contact">
         <div class="cta-container">
@@ -1194,6 +1597,9 @@
         </div>
     </footer>
 
+    <!-- Add SUPRA dApp SDK -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+
     <script>
         // Generate stars
         const starsContainer = document.querySelector('.stars-container');
@@ -1207,6 +1613,257 @@
             starsContainer.appendChild(star);
         }
 
+        // Web3 Connection Variables
+        let isWalletConnected = false;
+        let connectedAddress = null;
+        let starkeyWallet = null;
+
+        // Show wallet modal
+        function showWalletModal() {
+            const modal = document.getElementById('walletModal');
+            modal.classList.add('active');
+        }
+
+        // Close wallet modal
+        function closeWalletModal() {
+            const modal = document.getElementById('walletModal');
+            modal.classList.remove('active');
+        }
+
+        // Handle wallet connection button click
+        async function handleWalletConnection(event) {
+            if (event) event.preventDefault();
+
+            if (isWalletConnected) {
+                disconnectWallet();
+            } else {
+                // Show wallet selection modal
+                showWalletModal();
+            }
+        }
+
+        // Connect with Starkey wallet
+        async function connectWithStarkey() {
+            // Close modal first
+            closeWalletModal();
+
+            const connectBtn = document.getElementById('connectBtn');
+            const btnText = document.getElementById('walletBtnText');
+
+            // Show loading state
+            btnText.textContent = 'Connecting...';
+            connectBtn.style.opacity = '0.7';
+            connectBtn.style.pointerEvents = 'none';
+
+            try {
+                // Check if StarKey wallet is available
+                if (typeof window.starkey !== 'undefined') {
+                    starkeyWallet = window.starkey;
+                } else if (typeof window.ethereum !== 'undefined') {
+                    // Check for other Web3 wallets
+                    starkeyWallet = window.ethereum;
+                } else {
+                    throw new Error('No Web3 wallet detected. Please install StarKey wallet.');
+                }
+
+                // Request account access
+                const accounts = await starkeyWallet.request({
+                    method: 'eth_requestAccounts'
+                });
+
+                if (accounts.length > 0) {
+                    connectedAddress = accounts[0];
+                    isWalletConnected = true;
+
+                    // Update UI
+                    updateWalletUI(true);
+
+                    // Listen for account changes
+                    starkeyWallet.on('accountsChanged', handleAccountsChanged);
+
+                    // Listen for chain changes
+                    starkeyWallet.on('chainChanged', handleChainChanged);
+
+                    // Verify team members
+                    verifyTeamMembers();
+
+                    showNotification('Wallet connected successfully!', 'success');
+                }
+            } catch (error) {
+                console.error('Error connecting to wallet:', error);
+
+                if (error.message.includes('No Web3 wallet')) {
+                    // Prompt to install StarKey
+                    if (confirm('StarKey wallet not found. Would you like to install it?')) {
+                        window.open('https://www.starkey.app/', '_blank');
+                    }
+                } else {
+                    showNotification('Failed to connect wallet: ' + error.message, 'error');
+                }
+            } finally {
+                // Reset button state
+                connectBtn.style.opacity = '1';
+                connectBtn.style.pointerEvents = 'auto';
+
+                if (!isWalletConnected) {
+                    btnText.textContent = 'Connect';
+                }
+            }
+        }
+
+        // Handle account changes
+        function handleAccountsChanged(accounts) {
+            if (accounts.length === 0) {
+                // User disconnected wallet
+                disconnectWallet();
+            } else if (accounts[0] !== connectedAddress) {
+                // User switched accounts
+                connectedAddress = accounts[0];
+                updateWalletUI(true);
+                showNotification('Account changed', 'info');
+                verifyTeamMembers();
+            }
+        }
+
+        // Handle chain changes
+        function handleChainChanged(chainId) {
+            // You could handle SUPRA network switching here
+            console.log('Chain changed to:', chainId);
+            showNotification('Network changed. Please ensure you are on SUPRA network.', 'info');
+        }
+
+        // Update wallet UI
+        function updateWalletUI(connected) {
+            const connectBtn = document.getElementById('connectBtn');
+            const btnText = document.getElementById('walletBtnText');
+            const web3Section = document.getElementById('web3Status');
+
+            if (connected && connectedAddress) {
+                // Update button to show connected state
+                btnText.textContent = `${connectedAddress.slice(0, 6)}...${connectedAddress.slice(-4)}`;
+                connectBtn.classList.add('connected');
+
+                // Show wallet status panel
+                web3Section.classList.add('connected');
+                document.getElementById('walletAddress').textContent = connectedAddress;
+            } else {
+                // Reset to disconnected state
+                btnText.textContent = 'Connect';
+                connectBtn.classList.remove('connected');
+
+                // Hide wallet status panel
+                web3Section.classList.remove('connected');
+            }
+        }
+
+        // Disconnect wallet
+        function disconnectWallet() {
+            isWalletConnected = false;
+            connectedAddress = null;
+
+            // Remove event listeners if they exist
+            if (starkeyWallet) {
+                starkeyWallet.removeListener('accountsChanged', handleAccountsChanged);
+                starkeyWallet.removeListener('chainChanged', handleChainChanged);
+            }
+
+            // Update UI
+            updateWalletUI(false);
+
+            // Reset team verification
+            resetTeamVerification();
+
+            // Clear the status panel
+            const web3Section = document.getElementById('web3Status');
+            web3Section.classList.remove('connected');
+
+            showNotification('Wallet disconnected', 'info');
+        }
+
+        // Verify team members on blockchain
+        function verifyTeamMembers() {
+            const memberCards = document.querySelectorAll('.member-card');
+
+            memberCards.forEach((card, index) => {
+                setTimeout(() => {
+                    // Add connected state
+                    card.classList.add('web3-connected');
+
+                    // Show verification badge
+                    const badge = card.querySelector('.blockchain-verified');
+                    badge.style.display = 'flex';
+
+                    // Add animation
+                    card.style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        card.style.transform = 'scale(1)';
+                    }, 300);
+                }, index * 200);
+            });
+        }
+
+        // Reset team verification
+        function resetTeamVerification() {
+            const memberCards = document.querySelectorAll('.member-card');
+
+            memberCards.forEach(card => {
+                card.classList.remove('web3-connected');
+                card.querySelector('.blockchain-verified').style.display = 'none';
+            });
+        }
+
+        // Show notification
+        function showNotification(message, type) {
+            // Remove any existing notifications
+            const existingNotifications = document.querySelectorAll('.notification');
+            existingNotifications.forEach(n => n.remove());
+
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Check wallet connection on page load
+        window.addEventListener('load', async () => {
+            // Check if wallet was previously connected
+            if (typeof window.starkey !== 'undefined' || typeof window.ethereum !== 'undefined') {
+                const wallet = window.starkey || window.ethereum;
+                try {
+                    const accounts = await wallet.request({
+                        method: 'eth_accounts'
+                    });
+
+                    if (accounts.length > 0) {
+                        connectedAddress = accounts[0];
+                        isWalletConnected = true;
+                        starkeyWallet = wallet;
+                        updateWalletUI(true);
+                        verifyTeamMembers();
+
+                        // Re-attach listeners
+                        starkeyWallet.on('accountsChanged', handleAccountsChanged);
+                        starkeyWallet.on('chainChanged', handleChainChanged);
+                    }
+                } catch (error) {
+                    console.error('Error checking wallet connection:', error);
+                }
+            }
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', (event) => {
+            const modal = document.getElementById('walletModal');
+            if (event.target === modal) {
+                closeWalletModal();
+            }
+        });
+
         // Mobile menu toggle
         function toggleMobileMenu() {
             const navLinks = document.getElementById('navLinks');
@@ -1216,12 +1873,14 @@
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    // Close mobile menu if open
-                    document.getElementById('navLinks').classList.remove('active');
+                if (!this.classList.contains('connect-nav-btn')) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Close mobile menu if open
+                        document.getElementById('navLinks').classList.remove('active');
+                    }
                 }
             });
         });
@@ -1251,27 +1910,24 @@
         }, observerOptions);
 
         // Observe elements
-        document.querySelectorAll('.service-card, .stat-item').forEach(el => {
+        document.querySelectorAll('.service-card').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease-out';
             observer.observe(el);
         });
 
-        // Add typing effect to hero title
-        const heroTitle = document.querySelector('.hero h1');
-        if (heroTitle) {
-            const originalHTML = heroTitle.innerHTML;
-            heroTitle.style.opacity = '1';
-        }
-
         // Add hover effect to team cards
         document.querySelectorAll('.member-card').forEach(card => {
             card.addEventListener('mouseenter', function () {
-                this.style.transform = 'translateY(-10px) scale(1.05)';
+                if (!this.classList.contains('web3-connected')) {
+                    this.style.transform = 'translateY(-10px) scale(1.05)';
+                }
             });
             card.addEventListener('mouseleave', function () {
-                this.style.transform = 'translateY(0) scale(1)';
+                if (!this.classList.contains('web3-connected')) {
+                    this.style.transform = 'translateY(0) scale(1)';
+                }
             });
         });
     </script>
