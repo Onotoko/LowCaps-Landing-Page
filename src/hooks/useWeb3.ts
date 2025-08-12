@@ -84,7 +84,7 @@ export function useWeb3(): UseWeb3Return {
                 // Auto-close modal on successful connection
                 setModalVisible(false);
             } else {
-                throw new Error('No accounts returned from StarKey wallet');
+                // throw new Error('No accounts returned from StarKey wallet');
             }
         } catch (error: any) {
             console.error('Wallet connection error:', error);
