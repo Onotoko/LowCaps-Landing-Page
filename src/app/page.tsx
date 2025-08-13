@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useWeb3 } from '@/hooks/useWeb3';
-import { TEAM_MEMBERS, SERVICES } from '@/lib/constants';
+import { TEAM_MEMBERS, SERVICES } from '@/lib/constants/teammeber';
 
 export default function LandingPage() {
   const {

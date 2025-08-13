@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Web3State, Web3Actions } from '@/types/web3';
+import { Web3State, Web3Actions } from '@/lib/types/web3';
 
 export interface UseWeb3Return extends Web3State, Web3Actions {
     modalVisible: boolean;
