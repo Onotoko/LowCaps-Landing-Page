@@ -16,7 +16,7 @@ export const DEXUSDC_COIN_TYPE = '0x8f7d16ade319b0fce368ca6cdb98589c4527ce7f5b51
 export const CURVE_TYPE = '0xdc694898dff98a1b0447e0992d0413e123ea80da1021d464a4fbaf0265870d8::curves::Uncorrelated';
 
 // Token Decimals
-export const SUPRA_COIN_DECIMALS = 1_000_000; // 10^6
+export const SUPRA_COIN_DECIMALS = 1e8; // 10^8
 export const DEXUSDC_DECIMALS = 1_000_000; // 10^6
 
 // LOWCAPS Token Configuration
@@ -24,7 +24,7 @@ export const LOWCAPS_TOKEN = {
     name: 'Low Cap Gems',
     symbol: 'LOWCAPS',
     typeTag: '0x35e70dea5a275dda4bdba9c5903d489891a10712dfbfa2bf04cc009f77026b94::lowCapGems::LOWCAPS',
-    decimals: 1_000_000_000, // 10^9
+    decimals: 1_000_000, // 10^6
     totalSupply: 1_000_000_000, // 1 billion tokens
     address: '0x35e70dea5a275dda4bdba9c5903d489891a10712dfbfa2bf04cc009f77026b94'
 };

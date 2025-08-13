@@ -190,16 +190,11 @@ class SupraClientService {
             const amount_out = this.getAmountOut(coin_in, reserve_x, reserve_y, fee_pct, fee_scale);
             const price = Number(amount_out) / DEXUSDC_DECIMALS;
 
-            // Validate price range
-            if (price < 0.001 || price > 10) {
-                console.warn(`⚠️ SUPRA price seems unusual: $${price}`);
-            }
-
             console.log(`💰 SUPRA price: $${price.toFixed(6)}`);
             return price;
         } catch (error) {
             console.error("❌ Error fetching SUPRA price:", error);
-            return 0.4217; // Fallback price
+            return 0.0045; // Fallback price
         }
     }
 
