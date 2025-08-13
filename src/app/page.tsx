@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useWeb3 } from '@/hooks/useWeb3';
-import { TEAM_MEMBERS, SERVICES } from '@/lib/constants';
+import { TEAM_MEMBERS, SERVICES } from '@/lib/constants/teammeber';
 
 export default function LandingPage() {
   const {
@@ -16,7 +16,8 @@ export default function LandingPage() {
     connect,
     disconnect,
     showModal,
-    hideModal
+    hideModal,
+    justConnected
   } = useWeb3();
 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -48,12 +49,12 @@ export default function LandingPage() {
     }
   }, [error]);
 
-  // Handle success notification when wallet connects
+  // Handle success notification when wallet connects (only for active connections)
   useEffect(() => {
-    if (isConnected && !error) {
+    if (isConnected && justConnected && !error) {
       showNotification('Wallet connected successfully!', 'success');
     }
-  }, [isConnected, error]);
+  }, [isConnected, justConnected, error]);
 
   const showNotification = (message: string, type: 'success' | 'error' | 'info') => {
     setNotification({ message, type });
@@ -189,8 +190,6 @@ export default function LandingPage() {
         </div>
       )}
 
-
-
       {/* Notifications */}
       {notification && (
         <div className={`notification ${notification.type}`}>
@@ -232,7 +231,7 @@ export default function LandingPage() {
             <li><Link href="#home">Home</Link></li>
             <li><Link href="#team">Team</Link></li>
             <li><Link href="#services">Services</Link></li>
-            <li><Link href="#about">About</Link></li>
+            <li><Link href="/stats">Stats</Link></li>
             <li>
               <button
                 onClick={handleWalletConnection}
@@ -326,7 +325,7 @@ export default function LandingPage() {
                   <div className="member-role">{member.role}</div>
                   <div className="team-member-stats">
                     <span className="stat-badge">50+ Projects</span>
-                    <span className="stat-badge">4.9★ Rating</span>
+                    <span className="stat-badge">4.9⭐ Rating</span>
                   </div>
                 </div>
               ))}

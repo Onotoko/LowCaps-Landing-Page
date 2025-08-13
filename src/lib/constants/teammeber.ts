@@ -1,4 +1,4 @@
-import { TeamMember, Service } from '@/types/web3';
+import { TeamMember, Service } from '@/lib/types/web3';
 
 export const TEAM_MEMBERS: TeamMember[] = [
     {
